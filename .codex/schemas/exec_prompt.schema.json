@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-plant-a.invalid/schemas/exec_prompt.schema.json",
+  "title": "Codex Plant A EXEC_PROMPT Metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_path",
+    "worktree_root",
+    "tasks",
+    "acceptance_checks",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "contract_path": {"type": "string"},
+    "worktree_root": {"type": "string"},
+    "tasks": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "acceptance_checks": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "evidence": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "notes": {"type": "string"}
+  }
+}

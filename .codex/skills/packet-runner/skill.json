@@ -1,0 +1,14 @@
+{
+  "skill_id": "packet-runner",
+  "version": "0.1.3",
+  "title": "Packet Runner (worktree + evidence)",
+  "description": "Runs a packet contract in an isolated git worktree and emits evidence artifacts.",
+  "entrypoint": "scripts/run_packet.py",
+  "inputs": {
+    "contract_path": {
+      "type": "string",
+      "required": true,
+      "description": "Path to the packet contract JSON (e.g., .codex/packets/examples/packet-001-worktree-collab.json)"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "plant_id": "codex-plant-a",
+  "schema_version": "1.0.0",
+  "required_files": [
+    "README.md",
+    "agents.md",
+    "TEMPLATE_VERSION",
+    "plant.manifest.json",
+    "schemas/contract.schema.json",
+    "schemas/plant.schema.json",
+    "schemas/exec_prompt.schema.json",
+    "packets/packet_contract.template.json",
+    "packets/packet_contract.template.md",
+    "packets/EXEC_PROMPT.template.md",
+    "packets/EXECUTION_DAG.md",
+    "tools/validate_plant.py",
+    "tools/validate_exec_prompt.py",
+    "tools/migrate_flat_packets.py",
+    "tools/run_packet.py",
+    "tools/root_preflight.py",
+    "tools/g0_enter_work.py",
+    "tools/evidence/collect_packet_evidence.py"
+  ],
+  "required_dirs": [
+    "packets",
+    "skills",
+    "tools",
+    "tools/evidence",
+    "schemas"
+  ],
+  "contract_schema": "schemas/contract.schema.json",
+  "plant_schema": "schemas/plant.schema.json"
+}
