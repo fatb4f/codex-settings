@@ -112,7 +112,6 @@ The default `config.toml` uses LiteLLM as a gateway. To use it:
   - Approval policy: `on-request`; reasoning summary: `detailed`; reasoning effort: `high`; raw agent reasoning hidden (show_raw_agent_reasoning = false)
   - MCP servers: `chrome` (DevTools over `npx`)
 
-
 ## MCP Configs
 
 Example MCP server configs live under `mcp/`. Copy entries into your active config as needed.
@@ -134,6 +133,12 @@ To use an alternative config:
 cp ~/.config/codex/configs/chatgpt.toml ~/.config/codex/config.toml
 codex
 ```
+
+
+## Project Memory
+
+Global project memory lives under `memory/` with schemas and a generated manifest.
+Regenerate using `bin/update_project_manifest.py`.
 
 ## Custom Prompts
 
@@ -180,6 +185,21 @@ Skills are automatically loaded when Codex starts. To use a skill:
 Skills are stored in `~/.config/codex/skills/**/SKILL.md`. Only files named exactly `SKILL.md` are recognized.
 
 ### Available Skills
+
+<details>
+<summary>project-memory-skill - Global project manifest generator</summary>
+
+#### [project-memory-skill](skills/project-memory-skill)
+
+Generate the global project manifest from repo-local `project.metadata.json` files.
+
+**Usage:**
+
+```bash
+~/.config/codex/bin/update_project_manifest.py
+```
+
+</details>
 
 <details>
 <summary>claude-skill - Handoff task to Claude Code CLI</summary>
@@ -463,3 +483,5 @@ Contributions welcome! Feel free to:
 ## LICENSE
 
 This project is released under MIT License - See [LICENSE](LICENSE) for details.
+
+- `project-memory-skill` - Build and refresh the global project manifest from repo-local metadata.

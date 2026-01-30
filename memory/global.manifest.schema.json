@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex.local/schemas/global.manifest.schema.json",
+  "title": "Codex Project Memory Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "root", "generated_at", "projects"],
+  "properties": {
+    "version": {"type": "string"},
+    "root": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "one_liner", "source_metadata", "source_mtime"],
+        "properties": {
+          "id": {"type": "string"},
+          "path": {"type": "string"},
+          "title": {"type": "string"},
+          "one_liner": {"type": "string"},
+          "tags": {"type": "array", "items": {"type": "string"}},
+          "stack": {"type": "array", "items": {"type": "string"}},
+          "entrypoints": {"type": "object", "additionalProperties": {"type": "string"}},
+          "source_metadata": {"type": "string"},
+          "source_mtime": {"type": "integer"}
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "paths"],
+        "properties": {
+          "id": {"type": "string"},
+          "paths": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

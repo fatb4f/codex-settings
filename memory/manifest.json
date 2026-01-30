@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-01-30T01:06:33.135334-05:00",
+  "projects": [
+    {
+      "entrypoints": {
+        "update_manifest": "/home/src404/.config/codex/bin/update_project_manifest.py"
+      },
+      "id": "codex-plant-a",
+      "one_liner": "Repo-agnostic Codex execution surface for subtree imports under .codex/.",
+      "path": "/home/src404/src/codex-plant-a",
+      "source_metadata": "project.metadata.json",
+      "source_mtime": 1769753127,
+      "stack": [
+        "python"
+      ],
+      "tags": [
+        "codex",
+        "plant-a",
+        "tooling"
+      ],
+      "title": "codex-plant-a"
+    }
+  ],
+  "root": "/home/src404/src",
+  "version": "1.0"
+}

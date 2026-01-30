@@ -1,0 +1,11 @@
+{
+  "id": "example-project",
+  "title": "Example Project",
+  "one_liner": "One sentence describing what this repo does.",
+  "tags": ["example"],
+  "stack": ["python"],
+  "entrypoints": {
+    "dev": "just dev",
+    "tests": "pytest -q"
+  }
+}
