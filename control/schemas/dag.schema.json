@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dag.schema.json",
+  "title": "Execution DAG",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dag_id", "nodes"],
+  "properties": {
+    "dag_id": {"type": "string", "minLength": 1},
+    "version": {"type": "string"},
+    "terminals": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "outputs"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "action": {"type": "string", "minLength": 1},
+          "preconditions": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "outputs": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "on_failure": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["terminal", "reason_code"],
+            "properties": {
+              "terminal": {"type": "string", "minLength": 1},
+              "reason_code": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    }
+  }
+}

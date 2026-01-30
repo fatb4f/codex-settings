@@ -1,0 +1,7 @@
+# Example GitHub MCP server configuration
+# Requires: GITHUB_TOKEN in environment
+
+[mcp_servers.github]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github@latest"]
+# env = { "GITHUB_TOKEN" = "${GITHUB_TOKEN}" }

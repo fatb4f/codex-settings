@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Logs
+*.log
+
+# Environment-specific
+.env
+.env.local
+
+# Codex files
+history.jsonl
+sessions
+version.json
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Temp files
+tmp
+.research
