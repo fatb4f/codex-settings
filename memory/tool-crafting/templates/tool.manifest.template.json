@@ -1,0 +1,43 @@
+{
+  "tool_id": "example-tool",
+  "version": "0.1.0",
+  "description": "Short description of the tool's purpose.",
+  "entrypoints": [
+    {
+      "name": "cli",
+      "path": "tools/example_tool.py",
+      "kind": "cli"
+    }
+  ],
+  "modes": [
+    {
+      "name": "default",
+      "description": "Standard execution mode.",
+      "flags": ["--strict"]
+    }
+  ],
+  "inputs": [
+    {
+      "name": "config",
+      "schema_ref": "control/schemas/example_tool.config.schema.json"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "report",
+      "schema_ref": "control/schemas/example_tool.report.schema.json"
+    }
+  ],
+  "exceptions": [
+    {
+      "path": "~/.config/codex/memory/tool-crafting/control/exceptions/example-tool.md",
+      "expiry": "2026-12-31",
+      "approver": "name-or-role"
+    }
+  ],
+  "metadata": {
+    "owner": "team-or-person",
+    "repo": "<repo-name>",
+    "tags": ["control", "tooling"]
+  }
+}

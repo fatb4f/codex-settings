@@ -1,5 +1,5 @@
 ---
-name: project-memory-skill
+name: project-memory
 description: Maintain a global project manifest from repo-local metadata files.
 ---
 
@@ -9,10 +9,10 @@ Provide a deterministic global project index by scanning repo-local
 
 ## Inputs
 - Repo-local files: `<repo_root>/project.metadata.json`
-- Schema: `~/.config/codex/memory/project.metadata.schema.json`
+- Schema: `~/.config/codex/memory/project-memory/project.metadata.schema.json`
 
 ## Outputs
-- Global manifest: `~/.config/codex/memory/manifest.json`
+- Global manifest: `~/.config/codex/memory/project-memory/manifest.json`
 - Optional conflicts list embedded in the manifest
 
 ## Commands

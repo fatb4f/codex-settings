@@ -1,0 +1,28 @@
+{
+  "dag_id": "example-tool",
+  "version": "0.1.0",
+  "terminals": ["success", "failure"],
+  "reason_codes": ["VALIDATION_FAILED", "IO_ERROR", "TIMEOUT"],
+  "nodes": [
+    {
+      "id": "preflight",
+      "action": "validate_inputs",
+      "preconditions": [],
+      "outputs": ["validated_input"],
+      "on_failure": {
+        "terminal": "failure",
+        "reason_code": "VALIDATION_FAILED"
+      }
+    },
+    {
+      "id": "execute",
+      "action": "run_core_logic",
+      "preconditions": ["validated_input"],
+      "outputs": ["report"],
+      "on_failure": {
+        "terminal": "failure",
+        "reason_code": "IO_ERROR"
+      }
+    }
+  ]
+}

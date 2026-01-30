@@ -2,15 +2,27 @@
 
 ## Canonical reference
 This repository/workspace standard is anchored by the **Python Tooling Standard (Proposal)** document. Treat it as the baseline requirements for robustness, control flow, adaptive controls, and CI gating.
-- Canonical location (repo-relative): `docs/standards/python_standard.md`
-- Include a visible version or last-updated date in that document (e.g., `Version: 2026-01-30`)
-- Legacy fallback: if the canonical path is missing, `python_standard.md` at repo root may be used temporarily
+- Canonical location (global): `~/.config/codex/memory/tool-crafting/python_standard.md`
+- Repo access strategy (preferred): `.codex/memory/tool-crafting/python_standard.md -> ~/.config/codex/memory/tool-crafting/python_standard.md`
 
 ## When this pattern is REQUIRED
 Apply this pattern whenever you **design, add, or materially modify**:
 - a Python tool in `codex-plant-a`, `ctrlr`, or adjacent plant-a|b repos
 - any “controller-like” orchestration script (pipeline drivers, scanners, validators, packet runners)
 - any tool intended for reuse (not a one-off script)
+
+## Codex agent tool-crafting workflow (summary)
+1. **Clarify scope and mode**: identify tool intent, safety constraints, and required modes (strict/permissive).
+2. **Define contracts first**: draft `tool.manifest.json`, input/output schemas, and `dag.json`.
+3. **Split controller vs core vs actuator**: isolate side effects to actuators with timeouts/retries.
+4. **Implement gates**: preflight validation, CI gates, and promotion gate.
+5. **Add resilience**: retries, circuit breakers, bulkheads, atomic writes.
+6. **Test negative paths**: error taxonomy + deterministic failures.
+7. **Ship with docs**: include manifest, schemas, DAG, and exception (if any).
+
+**Templates (start here)**
+- Tool manifest: `~/.config/codex/memory/tool-crafting/templates/tool.manifest.template.json`
+- DAG: `~/.config/codex/memory/tool-crafting/templates/dag.template.json`
 
 ## Required components (artifact checklist)
 A compliant tool/pipeline must define or reference all of the following:
@@ -19,8 +31,8 @@ A compliant tool/pipeline must define or reference all of the following:
 A machine-readable manifest describing the tool or “plant surface”.
 - For project-indexing: global `~/.config/codex/memory/manifest.json` + per-repo `project.metadata.json`
 - For a tool/pipeline: `tool.manifest.json` (or repo-local section) describing entrypoints, modes, inputs, outputs
-- Required schema (global): `~/.config/codex/control/schemas/tool.manifest.schema.json`
-- Repo access strategy (preferred): `.codex/control/schemas/tool.manifest.schema.json -> ~/.config/codex/control/schemas/tool.manifest.schema.json`
+- Required schema (global): `~/.config/codex/memory/tool-crafting/control/schemas/tool.manifest.schema.json`
+- Repo access strategy (preferred): `.codex/memory/tool-crafting/control/schemas/tool.manifest.schema.json -> ~/.config/codex/memory/tool-crafting/control/schemas/tool.manifest.schema.json`
 
 ### 2) Schema
 Explicit schemas for all structured inputs/outputs.
@@ -33,8 +45,8 @@ An explicit execution model.
 - `dag.json` = SSOT (machine-readable)
 - `dag.mmd` = generated view (no-hand-edit rule)
 - Nodes have: preconditions, actions, outputs, failure terminals, reason codes
-- Required schema (global): `~/.config/codex/control/schemas/dag.schema.json`
-- Repo access strategy (preferred): `.codex/control/schemas/dag.schema.json -> ~/.config/codex/control/schemas/dag.schema.json`
+- Required schema (global): `~/.config/codex/memory/tool-crafting/control/schemas/dag.schema.json`
+- Repo access strategy (preferred): `.codex/memory/tool-crafting/control/schemas/dag.schema.json -> ~/.config/codex/memory/tool-crafting/control/schemas/dag.schema.json`
 
 ### 4) Gating
 Mechanical gates that enforce contracts and prevent unsafe execution.
@@ -77,7 +89,7 @@ Built-in resilience features for scale and partial failure.
 
 ## Exception policy (waivers)
 If a tool cannot meet a required component, an exception is mandatory.
-- Store as `control/exceptions/<tool_id>.md`
+- Store as `~/.config/codex/memory/tool-crafting/control/exceptions/<tool_id>.md`
 - Must include: scope, rationale, risk assessment, compensating controls, approver, and expiry date
 - Reference the exception in `tool.manifest.json`
 
