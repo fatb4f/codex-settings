@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-plant-a.invalid/schemas/contract.schema.json",
+  "title": "Codex Plant A Packet Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "area",
+    "repo",
+    "base_ref",
+    "branch",
+    "github_ops_required",
+    "net_ops_required",
+    "allowed_paths",
+    "forbidden_outputs",
+    "worktree_policy",
+    "network_policy",
+    "evidence"
+  ],
+  "properties": {
+    "packet_id": {"type": "string"},
+    "area": {"type": "string"},
+    "repo": {"type": "string"},
+    "base_ref": {"type": "string"},
+    "branch": {"type": "string"},
+    "github_ops_required": {"type": "boolean"},
+    "net_ops_required": {"type": "boolean"},
+    "allowed_paths": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "forbidden_outputs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "worktree_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "worktree_root",
+        "deny_if_worktree_exists",
+        "allow_dirty_globs",
+        "allow_untracked_globs"
+      ],
+      "properties": {
+        "mode": {"type": "string", "enum": ["strict", "allow_dirty_allowlist"]},
+        "worktree_root": {"type": "string"},
+        "deny_if_worktree_exists": {"type": "boolean"},
+        "allow_dirty_globs": {"type": "array", "items": {"type": "string"}},
+        "allow_untracked_globs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "network_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internet_access",
+        "domain_allowlist_preset",
+        "additional_domains",
+        "allowed_http_methods"
+      ],
+      "properties": {
+        "internet_access": {"type": "string", "enum": ["off", "on"]},
+        "domain_allowlist_preset": {"type": "string", "enum": ["none", "corp", "public"]},
+        "additional_domains": {"type": "array", "items": {"type": "string"}},
+        "allowed_http_methods": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "regen_cmd": {"type": "string"},
+        "test_cmd": {"type": "string"},
+        "commands": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_changed_files": {"type": "integer", "minimum": 0},
+        "max_changed_lines": {"type": "integer", "minimum": 0}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["out_dir", "include_git_diff_patch"],
+      "properties": {
+        "out_dir": {"type": "string"},
+        "include_git_diff_patch": {"type": "boolean"}
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "github": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "issue": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {"type": "string"},
+            "template": {"type": "string"},
+            "milestone": {"type": "string"},
+            "body": {"type": "string"},
+            "labels": {"type": "array", "items": {"type": "string"}},
+            "ensure": {"type": "boolean"},
+            "comment_on_run": {"type": "boolean"},
+            "close_on_success": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

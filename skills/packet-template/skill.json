@@ -1,0 +1,34 @@
+{
+  "skill_id": "packet-template",
+  "version": "0.2.0",
+  "title": "Packet Template (contract example generator)",
+  "description": "Creates a new packet example contract file under packets/examples using the SSOT template.",
+  "entrypoint": "scripts/new_packet.py",
+  "inputs": {
+    "packet_id": {
+      "type": "string",
+      "required": true,
+      "description": "Packet identifier (e.g., packet-002-something)"
+    },
+    "area": {
+      "type": "string",
+      "required": false,
+      "description": "Area (e.g., pipeline-sre)"
+    },
+    "repo": {
+      "type": "string",
+      "required": false,
+      "description": "Repo or local path"
+    },
+    "base_ref": {
+      "type": "string",
+      "required": false,
+      "description": "Base ref (e.g., origin/main)"
+    },
+    "branch": {
+      "type": "string",
+      "required": false,
+      "description": "Branch name"
+    }
+  }
+}

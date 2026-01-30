@@ -1,0 +1,52 @@
+{
+  "allowed_paths": [
+    ".codex/"
+  ],
+  "area": "foundation",
+  "base_ref": "HEAD",
+  "branch": "packet/packet-000-foundation",
+  "budgets": {
+    "max_changed_files": 200,
+    "max_changed_lines": 20000
+  },
+  "evidence": {
+    "include_git_diff_patch": false,
+    "out_dir": ".codex/out"
+  },
+  "forbidden_outputs": [],
+  "github_ops_required": false,
+  "network_policy": {
+    "additional_domains": [],
+    "allowed_http_methods": [],
+    "domain_allowlist_preset": "none",
+    "internet_access": "off"
+  },
+  "packet_id": "packet-000-foundation",
+  "repo": "<org>/<repo>",
+  "net_ops_required": false,
+  "github": {
+    "repo": "<org>/<repo>",
+    "issue": {
+      "title": "packet-000-foundation",
+      "body": "",
+      "template": "packet-default.yml",
+      "labels": [],
+      "milestone": "",
+      "ensure": false,
+      "comment_on_run": false,
+      "close_on_success": false
+    }
+  },
+  "run": {
+    "commands": [],
+    "regen_cmd": "",
+    "test_cmd": ""
+  },
+  "worktree_policy": {
+    "allow_dirty_globs": [],
+    "allow_untracked_globs": [],
+    "deny_if_worktree_exists": true,
+    "mode": "strict",
+    "worktree_root": ".codex/.worktrees"
+  }
+}

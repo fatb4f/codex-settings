@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-plant-a.invalid/schemas/plant.schema.json",
+  "title": "Codex Plant A Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plant_id",
+    "schema_version",
+    "required_files",
+    "required_dirs",
+    "contract_schema",
+    "plant_schema"
+  ],
+  "properties": {
+    "plant_id": {"type": "string"},
+    "schema_version": {"type": "string"},
+    "required_files": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "required_dirs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "contract_schema": {"type": "string"},
+    "plant_schema": {"type": "string"}
+  }
+}
